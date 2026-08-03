@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Simcha Package — Contact Us</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,400&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Everything is scoped under .tsp so this can be pasted into a GHL Custom HTML
+   block OR served standalone without touching the host page's body/styles. */
+.tsp,.tsp *,.tsp *::before,.tsp *::after{box-sizing:border-box;margin:0;padding:0}
+.tsp{
+  --gold:#E0A43C;--gold-dk:#C98A24;--blue:#47569E;--ink:#34343C;
+  --warm:#F4F1EB;--card:#FFFFFF;--line:#E1D9CB;--muted:#8A867D;
+  --err:#A32D2D;--ok:#3B6D11;
+  font-family:'Raleway',sans-serif;color:var(--ink);
+  background:var(--warm);padding:2.25rem 1.25rem 3rem;min-height:100%;
+}
+.tsp-hdr{text-align:center;margin-bottom:1.75rem}
+.tsp-hdr .brand{font-family:'Playfair Display',serif;font-size:1.9rem;color:var(--ink);letter-spacing:.01em}
+.tsp-hdr .brand em{font-style:italic;color:var(--blue)}
+.tsp-hdr .sub{color:var(--gold-dk);font-size:.72rem;font-weight:600;letter-spacing:.28em;text-transform:uppercase;margin-top:.45rem}
+.tsp-hdr .lead{color:var(--muted);font-size:.92rem;margin-top:.7rem}
+.tsp-card{max-width:820px;margin:0 auto;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:2rem 1.9rem;box-shadow:0 10px 30px rgba(52,52,60,.06)}
+.tsp-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem 1.1rem}
+.tsp .field{display:flex;flex-direction:column;gap:.4rem}
+.tsp .field.full{grid-column:1 / -1}
+.tsp label{font-size:.74rem;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.tsp .req{color:var(--gold-dk);margin-left:2px}
+.tsp input,.tsp select,.tsp textarea{
+  font-family:'Raleway',sans-serif;font-size:.95rem;color:var(--ink);background:#FBFAF7;
+  border:1px solid var(--line);border-radius:8px;padding:.7rem .85rem;width:100%;outline:none;
+  -webkit-appearance:none;appearance:none;transition:border-color .15s,box-shadow .15s,background .15s;
+}
+.tsp input:focus,.tsp select:focus,.tsp textarea:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(224,164,60,.18);background:#fff}
+.tsp textarea{min-height:92px;resize:vertical}
+.tsp select{
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7' viewBox='0 0 12 7'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238A867D' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right .9rem center;padding-right:2rem;
+}
+/* Live simcha-name preview */
+.tsp .simcha-preview{grid-column:1 / -1;display:flex;align-items:center;gap:.6rem;
+  background:#FAF5EA;border:1px dashed var(--gold);border-radius:8px;padding:.7rem .95rem;font-size:.9rem;color:var(--ink)}
+.tsp .simcha-preview .tag{font-size:.68rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--gold-dk)}
+.tsp .simcha-preview strong{font-family:'Playfair Display',serif;font-weight:600}
+.tsp .simcha-preview .empty{color:var(--muted);font-style:italic}
+.tsp .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.tsp .btn{font-family:'Raleway',sans-serif;font-size:.86rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+  color:#fff;background:var(--gold);border:none;border-radius:8px;padding:1rem 2rem;cursor:pointer;width:100%;margin-top:1.4rem;transition:background .15s}
+.tsp .btn:hover{background:var(--gold-dk)}
+.tsp .btn:disabled{background:#D8CBB2;cursor:not-allowed}
+.tsp .msg{margin-top:1rem;padding:.85rem 1rem;border-radius:8px;font-size:.9rem;text-align:center;display:none}
+.tsp .msg.ok{display:block;background:#eef4e2;border:1px solid #a9cd73;color:var(--ok)}
+.tsp .msg.err{display:block;background:#fbeaea;border:1px solid #e79b9b;color:var(--err)}
+.tsp .msg.info{display:block;background:#f3efe6;border:1px solid var(--line);color:var(--muted)}
+.tsp .spin{display:inline-block;width:14px;height:14px;border:2px solid rgba(255,255,255,.45);border-top-color:#fff;border-radius:50%;animation:tspspin .6s linear infinite;vertical-align:-2px;margin-right:6px}
+@keyframes tspspin{to{transform:rotate(360deg)}}
+@media(max-width:560px){.tsp-grid{grid-template-columns:1fr}.tsp-card{padding:1.5rem 1.2rem}}
+</style>
+</head>
+<body>
+
+<div class="tsp">
+  <form id="lead-form" class="tsp-card" autocomplete="on">
+    <div class="tsp-grid">
+      <div class="field">
+        <label for="firstName">First Name <span class="req">*</span></label>
+        <input id="firstName" name="firstName" type="text" required>
+      </div>
+      <div class="field">
+        <label for="lastName">Last Name <span class="req">*</span></label>
+        <input id="lastName" name="lastName" type="text" required>
+      </div>
+
+      <div class="field">
+        <label for="phone">Phone <span class="req">*</span></label>
+        <input id="phone" name="phone" type="tel" required>
+      </div>
+      <div class="field">
+        <label for="email">Email <span class="req">*</span></label>
+        <input id="email" name="email" type="email" required>
+      </div>
+
+      <div class="field">
+        <label for="brideLast">Bride's Last Name <span class="req">*</span></label>
+        <input id="brideLast" name="brideLast" type="text" placeholder="e.g. Goldberg" required>
+      </div>
+      <div class="field">
+        <label for="groomLast">Groom's Last Name <span class="req">*</span></label>
+        <input id="groomLast" name="groomLast" type="text" placeholder="e.g. Schwartz" required>
+      </div>
+
+      <div class="simcha-preview">
+        <span class="tag">Simcha</span>
+        <span id="simchaPreview" class="empty">Enter both last names above</span>
+      </div>
+
+      <div class="field">
+        <label for="relationship">Your Relationship to the Simcha</label>
+        <select id="relationship" name="relationship">
+          <option value="">-- Select --</option>
+          <option>Bride</option>
+          <option>Groom</option>
+          <option>Mother of the Bride</option>
+          <option>Father of the Bride</option>
+          <option>Mother of the Groom</option>
+          <option>Father of the Groom</option>
+          <option>Other family</option>
+          <option>Friend</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="field">
+        <label for="simchaDate">Date of Simcha</label>
+        <input id="simchaDate" name="simchaDate" type="date">
+      </div>
+
+      <div class="field">
+        <label for="venue">Venue (if you have one)</label>
+        <input id="venue" name="venue" type="text" placeholder="Venue name">
+      </div>
+      <div class="field">
+        <label for="howHeard">How did you hear about us?</label>
+        <select id="howHeard" name="howHeard">
+          <option value="">-- Select --</option>
+          <option>Referral</option>
+          <option>Friend or family</option>
+          <option>Instagram</option>
+          <option>Facebook</option>
+          <option>Google search</option>
+          <option>A vendor</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <div class="field full">
+        <label for="notes">Anything else you'd like us to know?</label>
+        <textarea id="notes" name="notes"></textarea>
+      </div>
+    </div>
+
+    <!-- Honeypot: humans never see it; bots fill it and get silently dropped -->
+    <input class="hp" name="company_website" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+    <button type="submit" class="btn" id="submitBtn">Submit</button>
+    <div class="msg" id="formMsg" aria-live="polite"></div>
+  </form>
+</div>
+
+<script>
+(function(){
+  // Filled in after the Cloudflare Worker is deployed (Phase 4 of the playbook):
+  const WORKER_URL = "https://tsp-form-handler.miriam-68c.workers.dev";
+
+  const form = document.getElementById("lead-form");
+  const msg  = document.getElementById("formMsg");
+  const btn  = document.getElementById("submitBtn");
+  const preview = document.getElementById("simchaPreview");
+  const brideEl = document.getElementById("brideLast");
+  const groomEl = document.getElementById("groomLast");
+
+  // Same composing logic the Worker uses, so the customer sees exactly what
+  // will be created. The Worker re-composes server-side as the source of truth.
+  function tidy(s){
+    return (s||"").trim().replace(/\s+/g," ")
+      .toLowerCase()
+      .replace(/\b([a-z])/g, function(m,c){ return c.toUpperCase(); });
+  }
+  function composeSimcha(){
+    const b = tidy(brideEl.value), g = tidy(groomEl.value);
+    if (b && g) { preview.classList.remove("empty"); preview.innerHTML = "<strong>"+b+"-"+g+"</strong>"; }
+    else { preview.classList.add("empty"); preview.textContent = "Enter both last names above"; }
+  }
+  brideEl.addEventListener("input", composeSimcha);
+  groomEl.addEventListener("input", composeSimcha);
+
+  form.addEventListener("submit", async function(e){
+    e.preventDefault();
+    msg.className = "msg info"; msg.textContent = "Sending...";
+    btn.disabled = true; btn.innerHTML = '<span class="spin"></span>Sending...';
+
+    const payload = Object.fromEntries(new FormData(form).entries());
+    try {
+      const res = await fetch(WORKER_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
+      if (!res.ok) throw new Error("Request failed");
+      form.reset(); composeSimcha();
+      msg.className = "msg ok";
+      msg.textContent = "Thank you! We received your details and will be in touch shortly.";
+    } catch(err) {
+      msg.className = "msg err";
+      msg.textContent = "Something went wrong. Please try again, or email us directly.";
+    } finally {
+      btn.disabled = false; btn.textContent = "Submit";
+    }
+  });
+})();
+</script>
+</body>
+</html>
